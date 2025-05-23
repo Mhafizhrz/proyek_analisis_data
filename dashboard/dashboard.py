@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -9,11 +10,16 @@ st.set_page_config(page_title="E-commerce Dashboard", layout="wide")
 # === DATA LOADING ===
 @st.cache_data
 def load_main_data():
-    return pd.read_csv("main_data.csv", parse_dates=['order_purchase_timestamp'])
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(base_dir, "main_data.csv")
+    return pd.read_csv(file_path, parse_dates=['order_purchase_timestamp'])
 
 @st.cache_data
 def load_rfm_data():
-    df = pd.read_csv("main_data.csv", parse_dates=['order_purchase_timestamp'])
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(base_dir, "main_data.csv")
+    df = pd.read_csv(file_path, parse_dates=['order_purchase_timestamp'])
+    return df
     
     now = df['order_purchase_timestamp'].max()
     rfm = df.groupby('customer_unique_id').agg({
