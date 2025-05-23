@@ -19,8 +19,7 @@ def load_rfm_data():
     base_dir = os.path.dirname(os.path.abspath(__file__))
     file_path = os.path.join(base_dir, "main_data.csv")
     df = pd.read_csv(file_path, parse_dates=['order_purchase_timestamp'])
-    return df
-    
+
     now = df['order_purchase_timestamp'].max()
     rfm = df.groupby('customer_unique_id').agg({
         'order_purchase_timestamp': lambda x: (now - x.max()).days,  # Recency
