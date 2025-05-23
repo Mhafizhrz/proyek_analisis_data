@@ -1,3 +1,5 @@
+import os
+os.system("pip install matplotlib==3.8.0")
 import streamlit as st
 import pandas as pd
 import numpy as np
