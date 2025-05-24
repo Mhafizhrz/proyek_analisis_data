@@ -97,6 +97,7 @@ ax2.set_title("Distribusi Metode Pembayaran")
 ax2.axis('equal')
 st.pyplot(fig2)
 
+
 # === VISUALISASI 3: Review ===
 st.subheader("3. Distribusi Rating Pelanggan")
 review_scores = df['review_score'].value_counts().sort_index()
